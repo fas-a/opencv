@@ -8,6 +8,6 @@ cv2.imshow("Display window", img)
 k = cv2.waitKey(0)
 
 if k == ord("s"):
-    cv2.imwrite(".\image_proccess\photo2.png", img)
+    cv2.imwrite(".\image_proccess\photo2.jpg", img)
 elif k == ord("q"):
     sys.exit()
