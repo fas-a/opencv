@@ -1,6 +1,6 @@
 import cv2 as cv
 
-vid = cv.VideoCapture("./video_capture/vid.mp4")
+vid = cv.VideoCapture("./video_capture/output.mp4")
 if not vid.isOpened :
     print("failed open video")
     exit()
@@ -10,8 +10,7 @@ while True :
         print("frame not take")
         exit()
     cv.imshow("vid", frame)
-    cv.waitKey(5)
-    if cv.waitKey(1) == ord('q'):
+    if cv.waitKey(25) & 0xFF == ord('q'):
         break
 vid.release
 cv.destroyAllWindows()
