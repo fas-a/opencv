@@ -19,14 +19,19 @@
 import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
+def nothing(x):
+    pass
 # img = cv.imread('./image_proccess/messi5.jpg', cv.IMREAD_GRAYSCALE)
 vid = cv.VideoCapture(0)
 # assert img is not None, "file could not be read, check with os.path.exists()"
+cv.namedWindow('gray')
+cv.createTrackbar('tres', 'gray', 0, 255, nothing)
 while True:
+    tres = cv.getTrackbarPos('tres', 'gray')
     _,img = vid.read()
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     img = cv.medianBlur(img,5)
-    ret,th1 = cv.threshold(img,127,255,cv.THRESH_BINARY)
+    ret,th1 = cv.threshold(img,tres,255,cv.THRESH_BINARY)
     th2 = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY,11,2)
     th3 = cv.adaptiveThreshold(img,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY,11,2)
     # titles = ['Original Image', 'Global Thresholding (v = 127)',
